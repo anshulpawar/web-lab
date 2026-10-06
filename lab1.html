@@ -1,191 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Calculator</title>
+    <title>Lab 1 - Simple Calculator</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #f2f2f2;
-    }
+        .calculator {
+            width: 300px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 15px;
+        }
 
-    .calculator {
-      width: 320px;
-      padding: 20px;
-      background: #222;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-    }
+        #display {
+            width: 90%;
+            height: 50px;
+            margin-bottom: 15px;
+            font-size: 25px;
+            text-align: right;
+        }
 
-    #display {
-      width: 100%;
-      height: 70px;
-      margin-bottom: 15px;
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      background: #fff;
-      color: #222;
-      font-size: 32px;
-      text-align: right;
-      outline: none;
-    }
+        button {
+            width: 60px;
+            height: 50px;
+            margin: 4px;
+            font-size: 20px;
+            cursor: pointer;
+        }
 
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
+        .operator {
+            background-color: orange;
+        }
 
-    button {
-      height: 60px;
-      border: none;
-      border-radius: 10px;
-      background: #444;
-      color: white;
-      font-size: 22px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+        .clear {
+            background-color: red;
+            color: white;
+        }
 
-    button:hover {
-      background: #555;
-    }
-
-    button:active {
-      transform: scale(0.95);
-    }
-
-    .operator {
-      background: #ff9500;
-    }
-
-    .operator:hover {
-      background: #e68600;
-    }
-
-    .clear {
-      background: #d9534f;
-    }
-
-    .clear:hover {
-      background: #c9302c;
-    }
-
-    .equals {
-      background: #28a745;
-    }
-
-    .equals:hover {
-      background: #218838;
-    }
-
-    .zero {
-      grid-column: span 2;
-    }
-  </style>
+        .equals {
+            background-color: green;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
 
-  <div class="calculator">
-    <input type="text" id="display" value="0" readonly>
+    <h1>Lab 1 - Simple Calculator</h1>
 
-    <div class="buttons">
-      <button class="clear" onclick="clearDisplay()">C</button>
-      <button onclick="deleteLast()">⌫</button>
-      <button class="operator" onclick="addToDisplay('%')">%</button>
-      <button class="operator" onclick="addToDisplay('/')">÷</button>
+    <div class="calculator">
 
-      <button onclick="addToDisplay('7')">7</button>
-      <button onclick="addToDisplay('8')">8</button>
-      <button onclick="addToDisplay('9')">9</button>
-      <button class="operator" onclick="addToDisplay('*')">×</button>
+        <input type="text" id="display" value="0" readonly>
 
-      <button onclick="addToDisplay('4')">4</button>
-      <button onclick="addToDisplay('5')">5</button>
-      <button onclick="addToDisplay('6')">6</button>
-      <button class="operator" onclick="addToDisplay('-')">−</button>
+        <br>
 
-      <button onclick="addToDisplay('1')">1</button>
-      <button onclick="addToDisplay('2')">2</button>
-      <button onclick="addToDisplay('3')">3</button>
-      <button class="operator" onclick="addToDisplay('+')">+</button>
+        <button class="clear" onclick="clearDisplay()">C</button>
+        <button onclick="deleteLast()">⌫</button>
+        <button class="operator" onclick="addValue('%')">%</button>
+        <button class="operator" onclick="addValue('/')">÷</button>
 
-      <button class="zero" onclick="addToDisplay('0')">0</button>
-      <button onclick="addToDisplay('.')">.</button>
-      <button class="equals" onclick="calculate()">=</button>
+        <br>
+
+        <button onclick="addValue('7')">7</button>
+        <button onclick="addValue('8')">8</button>
+        <button onclick="addValue('9')">9</button>
+        <button class="operator" onclick="addValue('*')">×</button>
+
+        <br>
+
+        <button onclick="addValue('4')">4</button>
+        <button onclick="addValue('5')">5</button>
+        <button onclick="addValue('6')">6</button>
+        <button class="operator" onclick="addValue('-')">−</button>
+
+        <br>
+
+        <button onclick="addValue('1')">1</button>
+        <button onclick="addValue('2')">2</button>
+        <button onclick="addValue('3')">3</button>
+        <button class="operator" onclick="addValue('+')">+</button>
+
+        <br>
+
+        <button onclick="addValue('0')">0</button>
+        <button onclick="addValue('.')">.</button>
+        <button class="equals" onclick="calculate()">=</button>
+
     </div>
-  </div>
 
-  <script>
-    const display = document.getElementById("display");
+    <br>
 
-    function addToDisplay(value) {
-      if (display.value === "0" || display.value === "Error") {
-        display.value = value;
-      } else {
-        display.value += value;
-      }
-    }
+    <a href="index.html">← Back to Web Lab</a>
 
-    function clearDisplay() {
-      display.value = "0";
-    }
+    <script>
+        let display = document.getElementById("display");
 
-    function deleteLast() {
-      if (display.value.length > 1) {
-        display.value = display.value.slice(0, -1);
-      } else {
-        display.value = "0";
-      }
-    }
-
-    function calculate() {
-      try {
-        // Replace % with /100 for percentage calculations
-        let expression = display.value.replace(/%/g, "/100");
-
-        // Evaluate the mathematical expression
-        let result = Function('"use strict"; return (' + expression + ')')();
-
-        if (!isFinite(result)) {
-          throw new Error();
+        function addValue(value) {
+            if (display.value === "0" || display.value === "Error") {
+                display.value = value;
+            } else {
+                display.value += value;
+            }
         }
 
-        display.value = result;
-      } catch (error) {
-        display.value = "Error";
-      }
-    }
+        function clearDisplay() {
+            display.value = "0";
+        }
 
-    // Keyboard support
-    document.addEventListener("keydown", function(event) {
-      const key = event.key;
+        function deleteLast() {
+            if (display.value.length > 1) {
+                display.value = display.value.slice(0, -1);
+            } else {
+                display.value = "0";
+            }
+        }
 
-      if ("0123456789+-*/.%".includes(key)) {
-        addToDisplay(key);
-      } else if (key === "Enter" || key === "=") {
-        calculate();
-      } else if (key === "Escape") {
-        clearDisplay();
-      } else if (key === "Backspace") {
-        deleteLast();
-      }
-    });
-  </script>
+        function calculate() {
+            try {
+                let expression = display.value.replace(/%/g, "/100");
+                let result = Function("return " + expression)();
+
+                if (!isFinite(result)) {
+                    throw new Error();
+                }
+
+                display.value = result;
+            } catch {
+                display.value = "Error";
+            }
+        }
+    </script>
 
 </body>
 </html>
