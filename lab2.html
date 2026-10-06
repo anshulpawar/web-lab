@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Growing and Shrinking</title>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .text {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+
+            animation: move 6s infinite;
+        }
+
+        /* Growing text */
+        .growing {
+            color: blue;
+            animation: showGrowing 6s infinite;
+        }
+
+        /* Shrinking text */
+        .shrinking {
+            color: red;
+            animation: showShrinking 6s infinite;
+        }
+
+        /* 
+           Top-left → Bottom-right → Top-left
+        */
+        @keyframes move {
+
+            0% {
+                top: 20px;
+                left: 20px;
+                transform: scale(1);
+            }
+
+            50% {
+                top: 400px;
+                left: 600px;
+                transform: scale(3);
+            }
+
+            100% {
+                top: 20px;
+                left: 20px;
+                transform: scale(1);
+            }
+        }
+
+        /* Show growing text in first half */
+        @keyframes showGrowing {
+
+            0% {
+                opacity: 1;
+            }
+
+            49% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Show shrinking text in second half */
+        @keyframes showShrinking {
+
+            0% {
+                opacity: 0;
+            }
+
+            49% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="text">
+
+        <span class="growing">TEXT GROWING</span>
+
+        <span class="shrinking">TEXT SHRINKING</span>
+
+    </div>
+
+</body>
+</html>
