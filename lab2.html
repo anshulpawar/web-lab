@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Text Growing and Shrinking</title>
+    <title>Lab 2 - Text Growing and Shrinking</title>
 
     <style>
         body {
@@ -22,23 +22,18 @@
             animation: move 6s infinite;
         }
 
-        /* Growing text */
         .growing {
             color: blue;
             animation: showGrowing 6s infinite;
         }
 
-        /* Shrinking text */
         .shrinking {
             color: red;
             animation: showShrinking 6s infinite;
         }
 
-        /* 
-           Top-left → Bottom-right → Top-left
-        */
+        /* Top-left -> Bottom-right -> Top-left */
         @keyframes move {
-
             0% {
                 top: 20px;
                 left: 20px;
@@ -58,9 +53,8 @@
             }
         }
 
-        /* Show growing text in first half */
+        /* Show TEXT GROWING */
         @keyframes showGrowing {
-
             0% {
                 opacity: 1;
             }
@@ -78,9 +72,8 @@
             }
         }
 
-        /* Show shrinking text in second half */
+        /* Show TEXT SHRINKING */
         @keyframes showShrinking {
-
             0% {
                 opacity: 0;
             }
