@@ -1,139 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Calculator</title>
+    <title>Simple Calculator</title>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f2f2f2;
+            font-family: Arial;
+            
         }
 
-        .calculator {
-            width: 300px;
-            margin: 40px auto;
+        #calculator {
+            width: 260px;
+            margin: 50px auto;
             padding: 20px;
-            background-color: #222;
-            border-radius: 15px;
+            background-color: lightblue;
+            border: 1px solid red;
+            border-radius: 8px;
+            text-align: center;
         }
 
-        #display {
+        input, select, button {
             width: 90%;
-            height: 50px;
-            margin-bottom: 15px;
-            font-size: 25px;
-            text-align: right;
-        }
-
-        button {
-            width: 60px;
-            height: 50px;
-            margin: 4px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .operator {
-            background-color: orange;
-        }
-
-        .clear {
-            background-color: red;
-            color: white;
-        }
-
-        .equals {
-            background-color: green;
-            color: white;
+            padding: 8px;
+            margin: 6px 0;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Calculator</h1>
+    <div id="calculator">
+        <h2>Calculator</h2>
 
-    <div class="calculator">
+        <input type="number" id="n1"
+               placeholder="Enter first number">
 
-        <input type="text" id="display" value="0" readonly>
+        <select id="op">
+            <option value="+">Addition (+)</option>
+            <option value="-">Subtraction (-)</option>
+            <option value="*">Multiplication (*)</option>
+            <option value="/">Division (/)</option>
+        </select>
 
-        <br>
+        <input type="number" id="n2"
+               placeholder="Enter second number">
 
-        <button class="clear" onclick="clearDisplay()">C</button>
-        <button onclick="deleteLast()">⌫</button>
-        <button class="operator" onclick="addValue('%')">%</button>
-        <button class="operator" onclick="addValue('/')">÷</button>
+        <button onclick="calculate()">Calculate</button>
 
-        <br>
-
-        <button onclick="addValue('7')">7</button>
-        <button onclick="addValue('8')">8</button>
-        <button onclick="addValue('9')">9</button>
-        <button class="operator" onclick="addValue('*')">×</button>
-
-        <br>
-
-        <button onclick="addValue('4')">4</button>
-        <button onclick="addValue('5')">5</button>
-        <button onclick="addValue('6')">6</button>
-        <button class="operator" onclick="addValue('-')">−</button>
-
-        <br>
-
-        <button onclick="addValue('1')">1</button>
-        <button onclick="addValue('2')">2</button>
-        <button onclick="addValue('3')">3</button>
-        <button class="operator" onclick="addValue('+')">+</button>
-
-        <br>
-
-        <button onclick="addValue('0')">0</button>
-        <button onclick="addValue('.')">.</button>
-        <button class="equals" onclick="calculate()">=</button>
-
+        <h3 id="result"></h3>
     </div>
 
-    <br>
-
-    <a href="index.html">← Back to Web Lab</a>
-
     <script>
-        let display = document.getElementById("display");
-
-        function addValue(value) {
-            if (display.value === "0" || display.value === "Error") {
-                display.value = value;
-            } else {
-                display.value += value;
-            }
-        }
-
-        function clearDisplay() {
-            display.value = "0";
-        }
-
-        function deleteLast() {
-            if (display.value.length > 1) {
-                display.value = display.value.slice(0, -1);
-            } else {
-                display.value = "0";
-            }
-        }
-
         function calculate() {
-            try {
-                let expression = display.value.replace(/%/g, "/100");
-                let result = Function("return " + expression)();
+            var a = parseFloat(
+                document.getElementById("n1").value
+            );
 
-                if (!isFinite(result)) {
-                    throw new Error();
-                }
+            var b = parseFloat(
+                document.getElementById("n2").value
+            );
 
-                display.value = result;
-            } catch {
-                display.value = "Error";
+            var op = document.getElementById("op").value;
+            var ans;
+
+            if (isNaN(a) || isNaN(b)) {
+                document.getElementById("result").innerHTML =
+                    "Enter both numbers";
+                return;
             }
+
+            if (op == "+") {
+                ans = a + b;
+            }
+            else if (op == "-") {
+                ans = a - b;
+            }
+            else if (op == "*") {
+                ans = a * b;
+            }
+            else if (op == "/") {
+                if (b == 0) {
+                    document.getElementById("result").innerHTML =
+                        "Cannot divide by zero";
+                    return;
+                }
+                ans = a / b;
+            }
+
+            document.getElementById("result").innerHTML =
+                "Result = " + ans;
         }
     </script>
 
