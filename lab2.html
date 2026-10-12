@@ -1,107 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lab 2 - Text Growing and Shrinking</title>
-
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: white;
-        }
-
-        .text {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            font-weight: bold;
-
-            animation: move 6s infinite;
-        }
-
-        .growing {
-            color: blue;
-            animation: showGrowing 6s infinite;
-        }
-
-        .shrinking {
-            color: red;
-            animation: showShrinking 6s infinite;
-        }
-
-        /* Top-left -> Bottom-right -> Top-left */
-        @keyframes move {
-            0% {
-                top: 20px;
-                left: 20px;
-                transform: scale(1);
-            }
-
-            50% {
-                top: 400px;
-                left: 600px;
-                transform: scale(3);
-            }
-
-            100% {
-                top: 20px;
-                left: 20px;
-                transform: scale(1);
-            }
-        }
-
-        /* Show TEXT GROWING */
-        @keyframes showGrowing {
-            0% {
-                opacity: 1;
-            }
-
-            49% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-        /* Show TEXT SHRINKING */
-        @keyframes showShrinking {
-            0% {
-                opacity: 0;
-            }
-
-            49% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-    </style>
+    <title>Text Animation</title>
 </head>
-
 <body>
 
-    <div class="text">
+    <h1 id="text">TEXT-GROWING</h1>
 
-        <span class="growing">TEXT GROWING</span>
+    <script>
+        var text = document.getElementById("text");
+        var size = 5;
+        var growing = true;
 
-        <span class="shrinking">TEXT SHRINKING</span>
+        text.style.color = "red";
+        text.style.fontSize = size + "pt";
 
-    </div>
+        var timer = setInterval(function() {
+
+            if (growing) {
+                size++;
+                text.innerHTML = "TEXT-GROWING";
+                text.style.color = "red";
+
+                if (size >= 50) {
+                    growing = false;
+                    text.innerHTML = "TEXTSHRINKING";
+                    text.style.color = "blue";
+                }
+            }
+            else {
+                size--;
+
+                if (size <= 5) {
+                    clearInterval(timer);
+                }
+            }
+
+            text.style.fontSize = size + "pt";
+
+        }, 100);
+    </script>
 
 </body>
 </html>
