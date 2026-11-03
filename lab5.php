@@ -1,14 +1,25 @@
+
 <?php
 $file = __DIR__ . "/counter.txt";
 
-if (!file_exists($file)) {
-    file_put_contents($file, "0");
+$fp = fopen($file, "c+");
+
+if (flock($fp, LOCK_EX)) {
+
+    $count = (int) stream_get_contents($fp);
+
+    $count++;
+
+    ftruncate($fp, 0);
+    rewind($fp);
+
+    fwrite($fp, (string)$count);
+
+    fflush($fp);
+    flock($fp, LOCK_UN);
 }
 
-$count = (int) file_get_contents($file);
-$count++;
-
-file_put_contents($file, $count, LOCK_EX);
+fclose($fp);
 ?>
 
 <!DOCTYPE html>
@@ -40,10 +51,6 @@ file_put_contents($file, $count, LOCK_EX);
         h2 {
             color: #E91E63;
             font-size: 45px;
-        }
-
-        p {
-            color: #555;
         }
     </style>
 </head>
