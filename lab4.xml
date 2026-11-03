@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="p4abc.css"?>
+
+<students>
+    <student>
+        <usn>1VTU001</usn>
+        <name>Anshul Pawar</name>
+        <college>BMSIT Engineering College</college>
+        <programme>Computer Science</programme>
+        <year>2024</year>
+        <email>anshul@gmail.com</email>
+    </student>
+
+    <student>
+        <usn>1VTU002</usn>
+        <name>Harsh Raj</name>
+        <college>BMSIT Engineering College</college>
+        <programme>Information Science</programme>
+        <year>2023</year>
+        <email>harsh@gmail.com</email>
+    </student>
+
+    <student>
+        <usn>1VTU003</usn>
+        <name>Sahil Khanna</name>
+        <college>BMSIT Engineering College</college>
+        <programme>Electronics Engineering</programme>
+        <year>2022</year>
+        <email>sahil@gmail.com</email>
+    </student>
+</students>
