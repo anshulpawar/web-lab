@@ -1,0 +1,56 @@
+
+students {
+    display: block;
+    font-family: Arial, sans-serif;
+    background-color: #F0F4FF;
+    padding: 20px;
+}
+
+student {
+    display: block;
+    background-color: white;
+    border: 2px solid #8E9EFF;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 15px;
+}
+
+usn {
+    display: block;
+    color: #7B2CBF;
+    padding: 5px;
+    font-weight: bold;
+}
+
+name {
+    display: block;
+    color: #E63946;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+college {
+    display: block;
+    color: #0077B6;
+    font-weight: bold;
+    padding: 5px;
+}
+
+programme {
+    display: block;
+    color: #2A9D8F;
+    padding: 5px;
+}
+
+year {
+    display: block;
+    color: #F4A261;
+    padding: 5px;
+}
+
+email {
+    display: block;
+    color: #6A4C93;
+    padding: 5px;
+}
